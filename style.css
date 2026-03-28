@@ -110,3 +110,33 @@ body {
         linear-gradient(#FF3D00 20px, transparent 0);
     }
 }
+
+/* Start button (hidden at first) */
+#startBtn {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    padding: 10px 25px;
+    color: #fff;
+    text-decoration: none;
+    font-family: sans-serif;
+    border: 2px solid #FF3D00;
+    border-radius: 5px;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+/* Visible state */
+#startBtn.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Optional hover effect */
+#startBtn:hover {
+    background: #FF3D00;
+}
