@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DataRatz</title>
+    <link rel="stylesheet" href="mainstyle.css">
 </head>
 <body>
 
-    <a href="index.html">Loading</a>
+    <a href="index.html" class="back">← Back</a>
 
-    
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum impedit alias doloremque, aliquid dignissimos perferendis animi veritatis, molestias ea magnam quas voluptate a nam adipisci reiciendis asperiores, dolores quisquam incidunt.</h1>
+    <main class="cards-container">
+        <div class="cards" id="cards" aria-label="Site risk cards"></div>
+    </main>
+
+    <aside class="content" aria-live="polite">
+        <button class="close-btn" aria-label="Close panel">&times;</button>
+        <h2 id="title">Select a site</h2>
+        <div id="summary">Click a card to view details.</div>
+    </aside>
+
+    <script src="mainscript.js"></script>
 </body>
 </html>
