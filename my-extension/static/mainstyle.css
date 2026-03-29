@@ -1,0 +1,134 @@
+/* Global */
+.zen-dots-regular {
+  font-family: "Zen Dots", sans-serif;
+  font-weight: lighter;
+  font-style: normal;
+}
+
+
+body {
+    margin: 0;
+    font-family: "Zen Dots", sans-serif;
+    background-color: #0f1117;
+    color: #fff;
+}
+
+
+a.back {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 10px;
+    transition: color 0.2s;
+}
+a.back:hover {
+    color: #fff;
+}
+
+/* Cards Container */
+.cards-container {
+    padding: 70px 20px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Card */
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #161b24;
+    border: 2px solid #f90303ce;
+    border-radius: 10px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.card:hover, .card:focus {
+    background-color: #301c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+}
+.card:focus {
+    outline: none;
+    border-color: #ff4d4d;
+}
+
+/* Card Content */
+.card-left {
+    display: flex;
+    flex-direction: column;
+}
+.card-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+.card-desc {
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* Risk Badge */
+.card-risk {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+.card-risk.low { background-color: #1f3d2b; color: #4caf50; }
+.card-risk.medium { background-color: #3d331f; color: #ffcc00; }
+.card-risk.high { background-color: #3d1f1f; color: #ff4d4d; }
+
+/* Content Panel */
+.content {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45%;
+    max-width: 400px;
+    min-width: 280px;
+    height: 40%;
+    background-color: #11151d;
+    border: 1px solid #ff000071;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.content.hidden {
+    transform: translateY(100%);
+    opacity: 0;
+}
+.content h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.content #summary {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #ccc;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 20px;
+    cursor: pointer;
+}
+.close-btn:hover {
+    color: #fff;
+}

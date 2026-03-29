@@ -1,0 +1,200 @@
+/* =========================================
+   IMPORTS & RESET
+   ========================================= */
+/* Added Audiowide for the Title and kept Orbitron for the Button */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@900&family=Audiowide&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   STATIC IMAGE BACKGROUND
+   ========================================= */
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; 
+    overflow: hidden;   
+    
+    background: url('img/Loading Screen Background1.jpg') no-repeat center center fixed;
+    background-size: cover; 
+    
+    box-shadow: inset 0 0 0 1000px rgba(5, 5, 5, 0.4); 
+}
+
+/* =========================================
+   MAIN TITLE (DATA RAT) - NEW FONT
+   ========================================= */
+.main-title {
+    position: absolute;
+    top: 10%; 
+    
+    /* --- FONT CHANGE HERE --- */
+    font-family: 'Audiowide', cursive; 
+    font-size: 5.5rem; /* Slightly larger for this font style */
+    /* ------------------------ */
+    
+    font-weight: 400;
+    color: #FFF;
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    z-index: 20;
+
+    text-shadow: 
+        4px 4px 0px #FF3D00, 
+        -4px -4px 0px #00F0FF;
+    
+    animation: titleGlitch 5s infinite;
+}
+
+@keyframes titleGlitch {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+        transform: translateX(0) skew(0);
+    }
+    20% {
+        opacity: 0.8;
+        transform: translateX(-4px) skew(-5deg);
+        color: #00F0FF;
+    }
+    24% {
+        opacity: 1;
+        transform: translateX(4px) skew(5deg);
+        color: #FF3D00;
+    }
+    55% {
+        opacity: 0.7;
+        transform: scaleY(1.1);
+    }
+}
+
+/* =========================================
+   GLITCH RAT ANIMATION
+   ========================================= */
+.glitch {
+    position: relative; 
+    z-index: 10; 
+    width: 300px;
+    height: 340px;
+    background: url('img/rat.png');
+    background-size: cover;
+    animation: glitch 5s infinite steps(1); 
+}
+
+@keyframes glitch {
+    0%, 100% { background: url('img/rat.png'); background-size: cover; }
+    92.5% { background: url('img/ratg1.png'); background-size: cover; opacity: 1; }
+    95% { background: url('img/ratg2.png'); background-size: cover; opacity: 0; }
+    97.5% { background: url('img/ratg3.png'); background-size: cover; opacity: 1; }
+}
+
+/* =========================================
+   GRADIENT LOADER
+   ========================================= */
+.loader {
+    position: absolute;
+    z-index: 10;
+    bottom: 135px;              
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 20px;
+    width: 140px;
+
+    background-image: 
+    linear-gradient(#FFF 20px, transparent 0), 
+    linear-gradient(#FFF 20px, transparent 0), 
+    linear-gradient(#FFF 20px, transparent 0), 
+    linear-gradient(#FFF 20px, transparent 0);
+
+    background-repeat: no-repeat;
+    background-size: 20px auto;
+    background-position: 0 0, 40px 0, 80px 0, 120px 0;
+
+    animation: pgfill 2s linear infinite;
+}
+
+@keyframes pgfill {
+    0% { background-image: linear-gradient(#FFF 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0); }
+    25% { background-image: linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0); }
+    50% { background-image: linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0); }
+    75% { background-image: linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0); }
+    100% { background-image: linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0); }
+}
+
+/* =========================================
+   UPDATED START BUTTON 
+   ========================================= */
+#startBtn {
+    position: absolute;
+    z-index: 10;
+    bottom: 135px; 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    padding: 12px 30px; 
+    color: #fff;
+    text-decoration: none;
+    
+    font-family: 'Orbitron', sans-serif; 
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    border: 2px solid #FF3D00;
+    border-radius: 5px;
+    background: rgba(255, 61, 0, 0.1); 
+
+    opacity: 0; 
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+#startBtn.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#startBtn:hover {
+    background: #FF3D00;
+    color: #000;
+    box-shadow: 0 0 15px #FF3D00;
+}
+
+/* =========================================
+   Disclaimer Text Styling 
+   ========================================= */
+.disclaimer-text {
+    position: absolute;
+    bottom: 32px; 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    
+    font-family: 'VT323', monospace; 
+    color: #888c99; 
+    font-size: 1.1rem;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+}
+
+.disclaimer-text .warning-text {
+    color: #FF3D00; 
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    animation: textFlicker 3s infinite alternate;
+}
+
+@keyframes textFlicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.5; }
+}
