@@ -5,7 +5,6 @@
   font-style: normal;
 }
 
-
 body {
     margin: 0;
     font-family: "Zen Dots", sans-serif;
@@ -38,9 +37,33 @@ a.back:hover {
     color: #fff;
 }
 
+.ticker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+.ticker p {
+    display: inline-block;
+    white-space: nowrap;
+    color: #ff4d4d;
+    padding: 5px 0;
+    font-size: 14px;
+    animation: scroll 15s linear infinite;
+}
+
+/* Scroll Animation */
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
 .site-header {
     position: fixed;
-    top: 20px;
+    top: 30px;
     left: 0;
     width: 100%;
     background-color: #0f1117;
