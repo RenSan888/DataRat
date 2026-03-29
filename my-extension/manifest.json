@@ -3,14 +3,14 @@
   "name": "Data RAT",
   "version": "1.0",
   "description": "Summarizes consent popups with AI",
+  
   "permissions": ["activeTab", "scripting", "storage"],
-  "host_permissions": [
-    "https://generativelanguage.googleapis.com/*"
-  ],
+  "host_permissions": ["https://generativelanguage.googleapis.com/*"],
   "background": {
     "service_worker": "service-worker.js"
   },
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
   }
 }

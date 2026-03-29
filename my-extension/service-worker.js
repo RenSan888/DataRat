@@ -82,6 +82,7 @@ Return JSON only (no markdown, no code fences) with exactly this shape:
   "whatTheyTake": ["string"],
   "whatTheyDoWithIt": ["string"],
   "worstCaseScenario": ["string"],
+  "tags": ["string"],
   "consentRiskScore": {
     "score": 1,
     "reason": "string"
@@ -93,6 +94,7 @@ Rules:
 - Avoid legal jargon unless necessary.
 - consentRiskScore.score must be an integer from 1 to 10.
 - worstCaseScenario should contain 2 or 3 concise items.
+- tags should be an array of 3-5 short category tags (e.g., "User Tracking", "Third-party Sharing", "Data Retention", "Ad Personalization", "GDPR Compliant"). Use descriptive tags that categorize the privacy practices found.
 
 Consent text:
 ${consentText}
