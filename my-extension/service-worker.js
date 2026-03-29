@@ -1,4 +1,16 @@
 let cachedApiKey = null;
+const API_HISTORY_KEY = "apiResultHistory";
+const MAX_HISTORY_ITEMS = 100;
+
+async function saveApiResult(entry) {
+  const result = await chrome.storage.local.get(API_HISTORY_KEY);
+  const currentHistory = Array.isArray(result?.[API_HISTORY_KEY])
+    ? result[API_HISTORY_KEY]
+    : [];
+
+  const nextHistory = [entry, ...currentHistory].slice(0, MAX_HISTORY_ITEMS);
+  await chrome.storage.local.set({ [API_HISTORY_KEY]: nextHistory });
+}
 
 async function getGeminiApiKey() {
   if (cachedApiKey) {
@@ -32,8 +44,28 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log("[ConsentOS] Extracted consent text:\n", message.consentText);
 
     summarizeConsent(message.consentText)
-      .then((summary) => sendResponse({ ok: true, summary }))
-      .catch((error) => sendResponse({ ok: false, error: error.message }));
+      .then(async (summary) => {
+        await saveApiResult({
+          pageUrl: message.pageUrl || sender?.tab?.url || "",
+          pageTitle: message.pageTitle || sender?.tab?.title || "",
+          extractedText: message.consentText || "",
+          aiResult: summary,
+          timestamp: new Date().toISOString(),
+        });
+
+        sendResponse({ ok: true, summary });
+      })
+      .catch(async (error) => {
+        await saveApiResult({
+          pageUrl: message.pageUrl || sender?.tab?.url || "",
+          pageTitle: message.pageTitle || sender?.tab?.title || "",
+          extractedText: message.consentText || "",
+          aiResult: { error: error.message },
+          timestamp: new Date().toISOString(),
+        });
+
+        sendResponse({ ok: false, error: error.message });
+      });
 
     return true;
   }
@@ -43,7 +75,7 @@ async function summarizeConsent(consentText) {
   const GEMINI_API_KEY = await getGeminiApiKey();
 
   const prompt = `
-You are analyzing a website consent or cookie popup.
+You are analyzing a website terms of use, policy or privacy statement.
 
 Return JSON only (no markdown, no code fences) with exactly this shape:
 {

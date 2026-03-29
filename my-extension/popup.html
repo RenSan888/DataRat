@@ -163,6 +163,27 @@
         background: #f2ebde;
       }
 
+      .tiny-btn {
+        border: 1px solid #d4c8b3;
+        background: #f9f4ea;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        color: #5f5548;
+        padding: 4px 10px;
+        cursor: pointer;
+      }
+
+      .tiny-btn:hover {
+        background: #f2ebde;
+      }
+
+      .history-controls {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
       .collapsed {
         display: none;
       }
@@ -252,6 +273,116 @@
       .json-null {
         color: #6d5c41;
       }
+
+      #historyPanel {
+        max-height: 240px;
+        overflow-y: auto;
+        font-size: 12px;
+      }
+
+      .history-empty {
+        color: #5f5548;
+      }
+
+      .history-item {
+        border: 1px solid #e1d6c3;
+        border-radius: 8px;
+        padding: 8px;
+        background: #fffdfa;
+        margin-bottom: 8px;
+      }
+
+      .history-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .history-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
+
+      .history-time {
+        color: #6a5f4f;
+        font-weight: 700;
+      }
+
+      .history-title {
+        font-weight: 700;
+        color: #2d2519;
+        margin-bottom: 4px;
+        word-break: break-word;
+      }
+
+      .history-url {
+        color: #5f5548;
+        font-size: 11px;
+        margin-bottom: 6px;
+        word-break: break-all;
+      }
+
+      .history-snippet {
+        color: #3f372b;
+        font-size: 11px;
+        line-height: 1.35;
+        margin-bottom: 6px;
+      }
+
+      .history-actions {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .links-panel {
+        max-height: 180px;
+        overflow-y: auto;
+      }
+
+      .links-empty {
+        color: #5f5548;
+        font-size: 12px;
+      }
+
+      .link-item {
+        border: 1px solid #e1d6c3;
+        border-radius: 8px;
+        padding: 8px;
+        background: #fffdfa;
+        margin-bottom: 8px;
+      }
+
+      .link-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .link-item-title {
+        font-size: 12px;
+        font-weight: 700;
+        color: #2d2519;
+        margin-bottom: 4px;
+      }
+
+      .link-item-url {
+        color: #5f5548;
+        font-size: 11px;
+        margin-bottom: 6px;
+        word-break: break-all;
+      }
+
+      .link-item-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .link-score {
+        font-size: 11px;
+        color: #6a5f4f;
+        font-weight: 700;
+      }
     </style>
   </head>
   <body>
@@ -291,6 +422,33 @@
           <span id="riskBadge" class="risk-badge">N/A</span>
         </div>
         <div id="output" class="panel">Results will appear here...</div>
+
+        <div class="section-row">
+          <div class="section-title">Related Links</div>
+          <div class="history-controls">
+            <button id="scanBestLinkBtn" class="tiny-btn" type="button">
+              Scan Best Match
+            </button>
+          </div>
+        </div>
+        <div id="relatedLinksPanel" class="panel links-panel">
+          Run an analysis to rank related links.
+        </div>
+
+        <div class="section-row">
+          <div class="section-title">History</div>
+          <div class="history-controls">
+            <button id="refreshHistoryBtn" class="tiny-btn" type="button">
+              Refresh
+            </button>
+            <button id="clearHistoryBtn" class="tiny-btn" type="button">
+              Clear
+            </button>
+          </div>
+        </div>
+        <div id="historyPanel" class="panel">
+          History entries will appear here...
+        </div>
       </section>
     </main>
 
