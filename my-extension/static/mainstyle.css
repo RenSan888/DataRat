@@ -11,8 +11,19 @@ body {
     font-family: "Zen Dots", sans-serif;
     background-color: #0f1117;
     color: #fff;
-}
 
+    /* The Fix */
+    background-image: 
+        linear-gradient(rgba(15, 17, 23, 0.7), rgba(15, 17, 23, 0.7)), 
+        url(img/bac.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; /* Keeps the gif from scrolling */
+    
+    /* Ensure the body takes up the full screen height */
+    min-height: 100vh; 
+}
 
 a.back {
     position: absolute;
@@ -27,11 +38,32 @@ a.back:hover {
     color: #fff;
 }
 
+.site-header {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    background-color: #0f1117;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+    padding: 15px 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 30px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
 /* Cards Container */
 .cards-container {
-    padding: 70px 20px 20px;
+    padding: 100px 20px 20px;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .cards {
@@ -97,7 +129,7 @@ a.back:hover {
     max-width: 400px;
     min-width: 280px;
     height: 40%;
-    background-color: #11151d;
+    background-color: #4104045e;
     border: 1px solid #ff000071;
     border-radius: 10px;
     padding: 20px;
